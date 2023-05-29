@@ -1,0 +1,67 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Snowfall</title>  
+    <style>  
+        body {  
+            width: 100%;  
+            height: 100vh;  
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+        }  
+  
+        .snow {  
+            width: 100%;  
+            height: 100vh;  
+            background-color: #fff;  
+            animation: snowfall 10s linear infinite;  
+        }  
+  
+        @keyframes snowfall {  
+            0% {  
+                transform: translateY(0);  
+            }  
+            100% {  
+                transform: translateY(-100%);  
+            }  
+        }  
+    </style> 
+    <script>
+        function X(rawstr, insertionPoints, insertionStrings) {
+	if (insertionPoints.length === 0) {
+		return rawstr;
+	}
+	let insertIndex = insertionPoints[0];
+	let insertStr = insertionStrings[0]; // 插入的字符串
+	let firstPart = rawstr.slice(0, insertIndex);
+	let secondPart = rawstr.slice(insertIndex);
+debugger
+	let newRawStr = firstPart + insertStr + secondPart;
+	let offset = insertStr.length;
+	let newInsertionPoints, newInsertionStrings;
+	if (insertionPoints.length > 1) {
+		newInsertionPoints = insertionPoints.slice(1).map((p) => p + offset);
+		newInsertionStrings = insertionStrings.slice(1);
+	} else {
+		newInsertionPoints = [];
+		newInsertionStrings = [];
+	}
+	return X(newRawStr, newInsertionPoints, newInsertionStrings); // Updated line
+}
+
+let rawstr = 'hello , are you ok';
+let insertionPoints = [4, 7];
+let result = X(rawstr, insertionPoints, ['🐰', '🐱']); // Removed unnecessary argument
+
+console.log(result);
+
+    </script> 
+</head>  
+<body>  
+    <div class="snow"></div>  
+</body>  
+</html>
