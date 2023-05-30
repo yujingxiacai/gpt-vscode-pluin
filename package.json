@@ -7,7 +7,7 @@
 		"vscode": "^1.76.0"
 	},
 	"categories": ["Other"],
-	"activationEvents": ["onCommand:WullCopliot.init"],
+	"activationEvents": ["onCommand:WullCopilot.init"],
 	"publisher": "shenyukang",
 	"repository": {
 		"type": "github",
@@ -17,29 +17,29 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "WullCopliot.init",
-				"title": "Hello WullCopliot",
-				"category": "WullCopliot"
+				"command": "WullCopilot.init",
+				"title": "Hello WullCopilot",
+				"category": "WullCopilot"
 			},
 			{
 				"command": "update-key",
 				"title": "UPDATE Key",
-				"category": "WullCopliot"
+				"category": "WullCopilot"
 			},
 			{
 				"command": "update-prompt",
 				"title": "UPDATE Prompt",
-				"category": "WullCopliot"
+				"category": "WullCopilot"
 			},
 			{
 				"command": "ai-comment",
 				"title": "AI Comment",
-				"category": "WullCopliot"
+				"category": "WullCopilot"
 			},
 			{
 				"command": "ai-code-generate",
 				"title": "AI Code Generate",
-				"category": "WullCopliot"
+				"category": "WullCopilot"
 			}
 		],
 		"menus": {

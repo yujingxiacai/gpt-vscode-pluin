@@ -31,7 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
 				}
 
 				// 将输入的 eKey 存储到全局状态中
-				context.globalState.update('wullCopliotKey', key);
+				context.globalState.update('wullCopilotKey', key);
 
 				// 弹出欢迎消息
 				vscode.window.showInformationMessage('Update Key Success! —— The faster Wull‘s rocket🚀');
@@ -72,13 +72,13 @@ export function activate(context: vscode.ExtensionContext) {
 		await vscode.commands.executeCommand('setContext', 'prompt2', selection2.label);
 	});
 
-	const disposable = vscode.commands.registerCommand('WullCopliot.init', () => {
+	const disposable = vscode.commands.registerCommand('WullCopilot.init', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		const wullCopliotKey = context.globalState.get<string>('wullCopliotKey');
-		if (wullCopliotKey) {
+		const wullCopilotKey = context.globalState.get<string>('wullCopilotKey');
+		if (wullCopilotKey) {
 			vscode.window.showInformationMessage(
-				'Hello! Welcome WullCopliot —— The faster Wull‘s rocket🚀 ',
+				'Hello! Welcome WullCopilot —— The faster Wull‘s rocket🚀 ',
 			);
 		} else {
 			vscode.window
@@ -92,15 +92,15 @@ export function activate(context: vscode.ExtensionContext) {
 						// 显示错误提示
 						vscode.window.showErrorMessage('必须输入 openai key！');
 						// 递归调用 showInputBox，保证 input 一直存在
-						return vscode.commands.executeCommand('WullCopliot.init');
+						return vscode.commands.executeCommand('WullCopilot.init');
 					}
 
 					// 将输入的 eKey 存储到全局状态中
-					context.globalState.update('wullCopliotKey', key);
+					context.globalState.update('wullCopilotKey', key);
 
 					// 弹出欢迎消息
 					vscode.window.showInformationMessage(
-						'Hello! Welcome WullCopliot —— The faster Wull‘s rocket🚀',
+						'Hello! Welcome WullCopilot —— The faster Wull‘s rocket🚀',
 					);
 				});
 		}
@@ -116,8 +116,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// 获取选中文件的路径
 		const filePath = editor.document.uri.fsPath;
-		const wullCopliotKey = context.globalState.get<string>('wullCopliotKey') as string;
-		if (!wullCopliotKey) {
+		const wullCopilotKey = context.globalState.get<string>('wullCopilotKey') as string;
+		if (!wullCopilotKey) {
 			vscode.window
 				.showInputBox({
 					prompt: '请输入您的 openai key：',
@@ -129,11 +129,11 @@ export function activate(context: vscode.ExtensionContext) {
 						// 显示错误提示
 						vscode.window.showErrorMessage('必须输入 openai key！');
 						// 递归调用 showInputBox，保证 input 一直存在
-						return vscode.commands.executeCommand('WullCopliot.init');
+						return vscode.commands.executeCommand('WullCopilot.init');
 					}
 
 					// 将输入的 eKey 存储到全局状态中
-					context.globalState.update('wullCopliotKey', key);
+					context.globalState.update('wullCopilotKey', key);
 
 					// ai comment task process
 					vscode.window.withProgress(
@@ -171,7 +171,7 @@ export function activate(context: vscode.ExtensionContext) {
 					// });
 
 					// 向服务端传输文件并接收结果
-					await codeCommentTask(filePath, wullCopliotKey);
+					await codeCommentTask(filePath, wullCopilotKey);
 
 					// 显示结果
 					vscode.window.showInformationMessage('AI Comment Success! 🎉');
@@ -190,9 +190,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// 获取选中文件的路径
 		const filePath = editor.document.uri.fsPath;
-		const wullCopliotKey = context.globalState.get<string>('wullCopliotKey') as string;
+		const wullCopilotKey = context.globalState.get<string>('wullCopilotKey') as string;
 		// check whether exsited token
-		if (!wullCopliotKey) {
+		if (!wullCopilotKey) {
 			vscode.window
 				.showInputBox({
 					prompt: '请输入您的 openai key：',
@@ -204,11 +204,11 @@ export function activate(context: vscode.ExtensionContext) {
 						// 显示错误提示
 						vscode.window.showErrorMessage('必须输入 openai key！');
 						// 递归调用 showInputBox，保证 input 一直存在
-						return vscode.commands.executeCommand('WullCopliot.init');
+						return vscode.commands.executeCommand('WullCopilot.init');
 					}
 
 					// 将输入的 eKey 存储到全局状态中
-					context.globalState.update('wullCopliotKey', key);
+					context.globalState.update('wullCopilotKey', key);
 
 					// ai comment task process
 					vscode.window.withProgress(
@@ -248,7 +248,7 @@ export function activate(context: vscode.ExtensionContext) {
 					// });
 
 					// 向服务端传输文件并接收结果
-					await codeGeneratorTask(filePath, wullCopliotKey).catch((err) => {
+					await codeGeneratorTask(filePath, wullCopilotKey).catch((err) => {
 						console.log(err);
 					});
 
